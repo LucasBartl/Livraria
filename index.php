@@ -28,13 +28,13 @@
         [
             "Nome" => "Lista de Compras",
             "Descricao" => "Aprendendo super rapido e tals",
-            "Ano" => 2026,
+            "Ano" => 2025,
             "Status" => true
         ],
         [
             "Nome" => "Lista de livros",
             "Descricao" => "leitura e tals",
-            "Ano" => 2029,
+            "Ano" => 2024,
             "Status" => true
         ],
         [
@@ -44,6 +44,13 @@
             "Status" => true
         ]
     ];
+    $livros = [[
+        "titulo" => "Senhor dos Anais",
+        "lançamemto" => 1990,
+        "autor" => "Jacinto Pinto da Silva"]
+    ];
+
+
 
     function verificarStatus($p){
         //Condiçao de validaçao dentro do Arry
@@ -92,15 +99,15 @@
         return $filtrados;
     };
 
-    $filtroDoisValores= function($Listaprojetos, $chave ,$valor){
+    $filtroDoisValores= function($itens, $funcao){
 
         $filtrados = [];
 
-        foreach ($Listaprojetos as $projeto) {
+        foreach ($itens as $item) {
             
-            if($projeto[$chave] === $valor){
+            if($funcao($item)){
 
-                $filtrados[] = $projeto;
+                $filtrados[] = $item;
 
             }
         }
@@ -110,8 +117,10 @@
     
 
     
-    $projeosFiltrados = $filtro($projetos, null);
-    $projeosFiltrados = $filtroDoisValores($projetos, 'Ano', 2023);
+    $projeosFiltrados = $filtroDoisValores($projetos, function($projeto){
+        return $projeto['Ano'] < 2026;
+    });
+
     
 
     ?>
@@ -125,6 +134,15 @@
         </p>
         <hr>
         <!-- utilizaçao de arrays em PHP -->
+
+
+        <!-- Exemplo de utilizaçao de funçoes dinâmicas  -->  
+        <ul>
+          <?php //foreach($filtroDoisValores($livros,'titulo', 'Senhor dos Anais') as $livro): ?>
+             <!-- < <li><?php  //$livro['titulo'] ?></li> -->  
+             <?php //endforeach ?>
+        </ul> 
+
         <ul>
             <?php foreach ($projeosFiltrados as $projetin) : ?>
                 <div>
