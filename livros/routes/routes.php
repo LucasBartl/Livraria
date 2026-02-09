@@ -1,23 +1,19 @@
 <?php
-
-function loadController(){
-
-    //Validaçao de url 
-    $controller = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
-
-    if (!$controller) $controller = 'index';
+//Validaçao de url 
+$controller = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
 
 
-
-    //A função file_exists verifica se a arquivo de rota existe 
-    if (!file_exists("controllers/{$controller}.controller.php")) {
-        abort(404);   
-    }
+//Verifica se o controlador eciste 
+if (!$controller) $controller = 'index';
 
 
 
-
-    require "controllers/{$controller}.controller.php";
+//Verifica se o controlador existe e faz um require 
+if (!file_exists("controllers/{$controller}.controller.php")) {
+    abort(404);
 }
 
-loadController();
+
+
+
+require "controllers/{$controller}.controller.php";

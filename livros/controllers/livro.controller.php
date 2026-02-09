@@ -16,7 +16,7 @@ $filtroLivro = array_filter($livros, function ($l) use ($id) {
 //Varivel vai receber o primeiro que bata com os requisitos
 $livro = array_pop($filtroLivro);
 
-view('livro');
+view('livro',['livro' => $livro]);
 
 
 ?>

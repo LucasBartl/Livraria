@@ -1,4 +1,4 @@
-<?php 
-echo "<h1> Página não encontrada <h1/>";
-die();
-?>
+ <h1 class="text-lg font-bold mt-3"> 
+    Página não encontrada...
+
+</h1>
