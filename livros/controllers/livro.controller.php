@@ -1,6 +1,7 @@
 <?php
 
-/* Model */
+/* Model =========> Nosso CONTROLADOR */
+
 require 'dados.php';
 
 $id = $_REQUEST['id'];
@@ -16,9 +17,6 @@ $livro = array_pop($filtroLivro);
 $view = "livro";
 
 require 'views/templates/app.view.php';
-
-
-
 
 
 ?>
