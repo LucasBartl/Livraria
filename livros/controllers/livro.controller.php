@@ -7,16 +7,16 @@ require 'dados.php';
 $id = $_REQUEST['id'];
 
 
-//Criamos uma varivel que esta utilizando o array_filter que verifica se existe um id igual e se existir retorna o mesmo
+//array_filter percorre todos os livros e para cada livro ($l), verifica se o id da requisiçao é igual o do array
 $filtroLivro = array_filter($livros, function ($l) use ($id) {
 
     return $l['id']  == $id;
 });
+
+//Varivel vai receber o primeiro que bata com os requisitos
 $livro = array_pop($filtroLivro);
 
-$view = "livro";
-
-require 'views/templates/app.view.php';
+view('livro');
 
 
 ?>

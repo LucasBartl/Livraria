@@ -11,11 +11,7 @@ function loadController(){
 
     //A função file_exists verifica se a arquivo de rota existe 
     if (!file_exists("controllers/{$controller}.controller.php")) {
-        http_response_code(404);
-        echo "<h1>";
-        echo "Página não existe!";
-        echo "<h1/>";
-        die();
+        abort(404);   
     }
 
 
