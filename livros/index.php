@@ -1,6 +1,9 @@
 <?php
+
 require 'functions/functions.php';
-require "routes/routes.php"
+require 'models/livro.php';
+require 'database.php';
+require "routes/routes.php";
 
 
 

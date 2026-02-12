@@ -1,11 +1,14 @@
-<?php 
+<?php
 
+//OBS: PDO é uma classe que conecta PHP a bancos de dados 
 
+/* 
 $db= new PDO('sqlite:database.sqlite');
 $query = $db->query("select * from livros ");
 
 
 $livros = $query -> fetchAll();
+ */
 
 /* 
 Anotação do que aconteceu aqui: 
@@ -42,6 +45,3 @@ substituindo a array antigo, ou seja agora realmeente estamos usando banco de da
     ],
 
 ]; */
-
-
-?>

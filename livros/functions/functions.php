@@ -12,7 +12,7 @@ function view($view, $data = [] ){
 
     require "views/templates/app.view.php";
 
-}
+};
 
 
 function dd(...$dump){
