@@ -7,6 +7,8 @@ class livro
     public $titulo;
     public $autor;
     public $descricao;
+    public $ano_lancamento;
+    public $usuario_id;
 
     public static function make($item)
     {
@@ -15,6 +17,8 @@ class livro
         $livro->titulo = $item['titulo'];
         $livro->autor = $item['autor'];
         $livro->descricao = $item['descricao'];
+        $livro->ano_lancamento = $item['ano_lancamento'];
+        $livro-> usuario_id = $item['usuario_id'];
         return $livro;
     }
 };
