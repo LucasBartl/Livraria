@@ -3,49 +3,27 @@
 
 class DB
 {
-
     private $db;
-
     //Metodo construtor 
-    public function __construct()
+   
+    public function __construct($config)
     {
-        $this->db = new PDO('sqlite:database.sqlite');
+         //Variavel de conexão BD
+        $connectionString = $config['driver']. ":" .$config['database'];
+        $this->db = new PDO($connectionString);
     }
-
-    public function livros($pesquisa = null)
-    {
-
-        //$prepare recebe o select  
-        $prepare = $this->db->prepare("select * from livros              
-        where usuario_id = 1 and
-        titulo like :pesquisa ");
-        //Após usando o metodo bindValue informamos que :pesquisa do select é alterado para a variavel $pesquisa
-        $prepare->bindValue(':pesquisa', "%$pesquisa%");
-        //Definimos o tipo da PDO
-        $prepare->setFetchMode(PDO::FETCH_CLASS, livro::class);
-        //Aqui executamos o select, e guarda a informaçao na propria variavel $prepare
-        $prepare->execute();
-        //E por final é usado o fetchAll para verificaçao do conteudo 
-        return  $prepare->fetchAll();
-    }
+   
+    public function query($query, $class = null, $params = [] ){
 
 
-    public function livro($id)
-    {
-        //$prepare recebe o select  
-        $prepare = $this->db->prepare("select *  from livros where id = :id  ");
-        //Após usando o metodo bindValue informamos que :pesquisa do select é alterado para a variavel $pesquisa
-        $prepare->bindValue('id', $id);
-        //Definimos o tipo da PDO
-        $prepare->setFetchMode(PDO::FETCH_CLASS, livro::class);
-        //Aqui executamos o select, e guarda a informaçao na propria variavel $prepare
-        $prepare->execute();
-        //E por final é usado o fetch para verificaçao do conteudo 
-        return $item = $prepare->fetch();
-
-
-
-        //return array_map(fn($item) => livro::make($item), $itens)[0];
+        $prepare = $this->db->prepare($query);
+        if($class){
+            $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
+        $prepare->execute($params);
+        return  $prepare;
 
     }
 }
+
+$database = new DB($config['database']);
