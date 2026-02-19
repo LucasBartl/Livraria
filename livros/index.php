@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require 'functions/functions.php';
 require 'models/livro.php';
 //Variavel de config do BD

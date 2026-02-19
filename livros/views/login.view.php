@@ -30,11 +30,11 @@
                         <?= $mensagem ?>
                     </div>
                 <?php endif; ?>
-                <?php if (isset($validacoes) && sizeof($validacoes)):  ?>
+               <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
                     <div class="border-red-800 bg-red-900  text-red-400 px-4 py-2 rounded-md border-2">
                         <ul>
                             <li>Algo esta errado </li>
-                            <?php foreach ($validacoes as $validacao): ?>
+                            <?php foreach ($_SESSION['validacoes'] as $validacao): ?>
                                 <li><?= $validacao ?></li>
                             <?php endforeach; ?>
                         </ul>
