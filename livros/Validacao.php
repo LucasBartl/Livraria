@@ -83,9 +83,21 @@ private function confirmed($campo, $valor, $valorDeConfirmacao)
 
 
 
-    public function naoPassou()
+    public function naoPassou($nomeCustomizado = null)
     {
-        $_SESSION['validacoes'] = $this->validacoes;
+
+        $chave = 'validacoes';
+
+        if($nomeCustomizado){
+            $chave .=  '_' . $nomeCustomizado;
+        }
+
+
+        //Adicionar valor 
+        flash()->push($chave, $this->validacoes);
+
+
+        //$_SESSION['validacoes'] = $this->validacoes;
         return sizeof($this->validacoes) > 0;
     }
 }

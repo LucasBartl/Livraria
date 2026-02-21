@@ -1,5 +1,5 @@
 <?php
-require 'Validacao.php';
+
 
 /* Registro de usuário no banco */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     ],$_POST);
 
-    if($validacao -> naoPassou()){
+    if($validacao -> naoPassou('registrar')){
         $_SESSION['validacoes'] = $validacao->validacoes;
         header('location: /login');
         exit();
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]
     );
 
-
+    flash()->push('mensagem', 'Usuário cadastrado!');
     //Após finalizar iremos mudar o location dele para login com mensagem de sucesso 
-    header('location: /login?mensagem=cadastrado!');
+    header('location: /login');
     exit();
 }

@@ -18,7 +18,7 @@ function view($view, $data = [])
 function dd(...$dump)
 {
 
-   dump($dump);
+    dump($dump);
 
 
     die();
@@ -29,7 +29,6 @@ function dump(...$dump)
     echo "<pre>";
     var_dump($dump);
     echo "<pre/>";
-
 };
 
 
@@ -39,3 +38,9 @@ function abort($code)
     view($code);
     die();
 };
+
+function flash()
+{
+
+    return new Flash;
+}
