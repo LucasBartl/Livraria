@@ -3,7 +3,7 @@
 class Validacao
 {
 
-    public $validacoes;
+    public $validacoes = [];
 
     public static function validar($regras, $dados)
     {
@@ -16,7 +16,8 @@ class Validacao
             foreach ($regrasCampo as $regra) {
                  $valorCampo = $dados[$campo];
                 if ($regra == 'confirmed') {
-                    $validacao->$regra($campo, $valorCampo, $dados["{$campo}_confirmacao"]);
+                    
+                    $validacao->$regra($campo, $valorCampo, $dados["confirmacao_{$campo}"]);
                 } else if (str_contains($regra, ':')) {
                     $temp = explode(':', $regra);
                     $regra = $temp[0];
@@ -47,9 +48,9 @@ class Validacao
 
 private function confirmed($campo, $valor, $valorDeConfirmacao)
     {
-
+        //dd($valorDeConfirmacao);
         if ($valor != $valorDeConfirmacao) {
-
+            
             $this->validacoes[] = "O $campo de confirmação está diferente.";
     
         }
