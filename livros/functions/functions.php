@@ -44,3 +44,14 @@ function flash()
 
     return new Flash;
 }
+
+function config($chave = null){
+    $config =  require 'config.php';
+    
+    if(strlen($chave) > 0){
+        return $config[$chave];
+    }
+    return $config;
+
+
+}

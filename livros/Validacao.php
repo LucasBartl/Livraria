@@ -11,24 +11,43 @@ class Validacao
         //Regras: nome e regras 
         foreach ($regras as $campo => $regrasCampo) {
 
-           
+
 
             foreach ($regrasCampo as $regra) {
-                 $valorCampo = $dados[$campo];
+                $valorCampo = $dados[$campo];
                 if ($regra == 'confirmed') {
-                    
+
                     $validacao->$regra($campo, $valorCampo, $dados["confirmacao_{$campo}"]);
                 } else if (str_contains($regra, ':')) {
                     $temp = explode(':', $regra);
                     $regra = $temp[0];
                     $regraAr = $temp[1];
-                    $validacao->$regra($regraAr,$campo, $valorCampo);
+                    $validacao->$regra($regraAr, $campo, $valorCampo);
                 } else {
-                    $validacao->$regra( $campo, $valorCampo);
+                    $validacao->$regra($campo, $valorCampo);
                 }
             }
         }
+
         return $validacao;
+    }
+    private function unique($tabela, $campo, $valor)
+    {
+
+        if (strlen($valor) == 0) {
+            return;
+        }
+        $db = new Database(config('database')); 
+
+        $resultado = $db->query(
+            query:"select * from $tabela where $campo = :valor ",
+            params: ['valor' => $valor],
+            
+        )->fetch();
+
+        if($resultado){
+             $this->validacoes[] = "Essa $campo já esta em uso  !";
+        }
     }
 
     private function required($campo, $valor)
@@ -46,15 +65,13 @@ class Validacao
         }
     }
 
-private function confirmed($campo, $valor, $valorDeConfirmacao)
+    private function confirmed($campo, $valor, $valorDeConfirmacao)
     {
         //dd($valorDeConfirmacao);
         if ($valor != $valorDeConfirmacao) {
-            
-            $this->validacoes[] = "O $campo de confirmação está diferente.";
-    
-        }
 
+            $this->validacoes[] = "O $campo de confirmação está diferente.";
+        }
     }
     private function max($max, $campo, $valor)
     {
@@ -88,7 +105,7 @@ private function confirmed($campo, $valor, $valorDeConfirmacao)
 
         $chave = 'validacoes';
 
-        if($nomeCustomizado){
+        if ($nomeCustomizado) {
             $chave .=  '_' . $nomeCustomizado;
         }
 
