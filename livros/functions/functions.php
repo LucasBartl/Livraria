@@ -7,7 +7,7 @@ function view($view, $data = [])
 
     foreach ($data as $key => $value) {
 
-        //Lembrete para o futuro pois vou ter duvida
+        //Lembrete para o futuro 
         $$key = $value; //Manteve o nome da chave e após recebeu o valor da segunda $value
     };
 

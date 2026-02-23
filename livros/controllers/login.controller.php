@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 //receber formulario com email 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

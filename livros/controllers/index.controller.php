@@ -1,5 +1,4 @@
 <?php
-/* Model */
 $search = $_REQUEST['search'] ?? '';
 
 $livros = $database->query(

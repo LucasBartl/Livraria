@@ -8,4 +8,11 @@ $livro = $database->query(
     params:["id" => $_GET['id']]
 )->fetch();
 
-view('livro', compact('livro'));
+
+$avaliacoes = $database->query(
+    query:"select * from avaliacoes where livro_id = :id ",
+    class: Avaliacao::class,
+    params:['id'=>$_GET['id']]
+)->fetchAll();
+
+view('livro', compact('livro', 'avaliacoes'));
