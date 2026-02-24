@@ -1,44 +1,9 @@
-    <?php
-    /* Obs:
-        Em array_reduce passamos o primeiro parametro como o array que queremos usar 
-        $carry é o acumulador (começa como null)
-        $avaliacao é cada item do array 
-        */
-    $somatoria = array_reduce($avaliacoes, function ($carry, $now) {
-        return ($carry ?? 0) + $now->nota;
-    }) ?? 0;
-    
-    $quantidade = count($avaliacoes); //conta quantas avaliacoes eu tenho 
-    if ($quantidade > 0) {
-        $media = $somatoria / $quantidade;
-    } else {
-        $media = 0;
-    }
-    $mediaArredondada = round($media); //Força que seja um número inteiro
-    $mediaArredondada = min($mediaArredondada, 5);
-    $notaFinal = str_repeat('⭐', $mediaArredondada);
+    <?php require_once './views/partials/_livro.php'; ?>
 
-    ?>
-
-   
-    <?= $livro->titulo ?>
-    <div class=" border-stone-800  p-2 rounded border-2 bg-stone-900 ">
-        <div class=" flex">
-            <div class="w-1/3">imagem</div>
-            <div class="space-y-1">
-                <a href="/livro?id=<?= $livro->autor ?>" class="font-semivbold hover:underline"><?= $livro->titulo ?></a>
-                <div class="text-xs italic"><?= $livro->autor ?></div>
-                <div class="text-xs italic"><?= $notaFinal ?>(<?= count($avaliacoes) ?> Avaliações)</div>
-            </div>
-        </div>
-        <div class="text-sm mt-2">
-            <?= $livro->descricao ?>
-        </div>
-    </div>
 
     <!-- Avaliaçao -->
 
-    <h2>Avaliações</h2>
+    <h2>Avaliações:</h2>
 
     <div class=" grid grid-cols-4 gap-4">
 

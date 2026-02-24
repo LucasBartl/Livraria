@@ -2,17 +2,13 @@
 /* Model*/
 
 
-$livro = $database->query(
-    query:"select * from livros where id = :id ",
-    class:livro::class,
-    params:["id" => $_GET['id']]
-)->fetch();
+$livro = livro::get($_GET['id']);
 
 
 $avaliacoes = $database->query(
-    query:"select * from avaliacoes where livro_id = :id ",
+    query: "select * from avaliacoes where livro_id = :id ",
     class: Avaliacao::class,
-    params:['id'=>$_GET['id']]
+    params: ['id' => $_GET['id']]
 )->fetchAll();
 
 view('livro', compact('livro', 'avaliacoes'));

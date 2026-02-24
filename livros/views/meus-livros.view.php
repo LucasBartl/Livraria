@@ -3,23 +3,12 @@
 
 <div class=" grid grid-cols-4 gap-4">
 
-    <div class="col-span-3 gap-4 grid">
-        <?php foreach ($livros as $livro): ?>
+    <div class="col-span-3 gap-4 flex flex-col">
+        <?php foreach ($livros as $livro) {
 
-            <div class=" border-stone-800  p-2 rounded border-2 bg-stone-900 ">
-                <div class=" flex">
-                    <div class="w-1/3">imagem</div>
-                    <div class="space-y-1">
-                        <a href="/livro?id=<?= $livro->autor ?>" class="font-semivbold hover:underline"><?= $livro->titulo ?></a>
-                        <div class="text-xs italic"><?= $livro->autor ?></div>
-                    </div>
-                </div>
-                <div class="text-sm mt-2">
-                    <?= $livro->descricao ?>
-                </div>
-            </div>
-
-        <?php endforeach; ?>
+            require './views/partials/_livro.php';
+        
+        } ?>
     </div>
     <div>
         <div class="border border-stone-700 rounded  ">
