@@ -20,6 +20,8 @@ class livro
 
     public $count_avaliacoes;
 
+    public $imagem;
+
     public function query($where, $params)
     {
         $database = new Database(config('database'));
@@ -32,6 +34,7 @@ class livro
                 l.autor,
                 l.descricao,
                 l.ano_lancamento,
+                l.imagem,
                 round(coalesce(avg(a.nota), 0)) as nota_avaliacao,
                 count(a.id) as count_avaliacoes
                 from livros l
@@ -42,7 +45,9 @@ class livro
                 l.titulo,
                 l.autor,
                 l.descricao,
-                l.ano_lancamento",
+                l.ano_lancamento,
+                l.imagem",
+                
             class: self::class,
             params: $params
         );

@@ -7,13 +7,12 @@
         <?php foreach ($livros as $livro) {
 
             require './views/partials/_livro.php';
-        
         } ?>
     </div>
     <div>
         <div class="border border-stone-700 rounded  ">
             <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Cadastre um novo livro:</h1>
-            <form class="px-4 py-3 space-y-4" method="POST" action="/criar-livro">
+            <form class="px-4 py-3 space-y-4" method="POST" action="/criar-livro" enctype="multipart/form-data">
 
                 <?php if ($validacoes = flash()->get('validacoes')): ?>
                     <div class="border-red-800 bg-red-900  text-red-400 px-4 py-2 rounded-md border-2">
@@ -25,6 +24,14 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <div class="flex flex-col">
+                    <label class="text-stone-400  mb-1">Imagem</label>
+                    <input
+                        type="file"
+                        name="imagem"
+                        class="border-stone-800 border-2 items-center rounded-md bg-stone-900 text-sm focus:outline-none px-2 py1"
+                        placeholder="">
+                </div>
 
                 <div class="flex flex-col">
                     <label class="text-stone-400  mb-1">Título</label>
