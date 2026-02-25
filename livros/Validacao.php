@@ -87,7 +87,6 @@ class Validacao
             $this->validacoes[] = "A $campo precisa de no menos um caracter especial";
         }
     }
-
     private function min($min, $campo, $valor)
     {
 
