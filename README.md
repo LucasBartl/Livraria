@@ -8,7 +8,7 @@ Projeto de uma livraria desenvolvido em **PHP puro**, com foco em aprendizado e 
 
 A aplicação simula um sistema básico de livraria, permitindo visualizar livros cadastrados e trabalhar com estrutura organizada de código PHP.
 
-Este projeto foi desenvolvido com objetivo de estudo durante a jornada de aprendizado em PHP.
+Este projeto foi desenvolvido com objetivo de estudo.
 
 ---
 
