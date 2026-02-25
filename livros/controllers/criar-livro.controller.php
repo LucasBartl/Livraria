@@ -36,7 +36,7 @@ $novonome = md5(rand());
 $extensao = pathinfo($_FILES['imagem']["name"], PATHINFO_EXTENSION);
 $imagem = "imagens/$novonome.$extensao";
 
-move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem);
+move_uploaded_file($_FILES['imagem']['tmp_name'], __DIR__ .'/../public/' . $imagem);
 
 
 

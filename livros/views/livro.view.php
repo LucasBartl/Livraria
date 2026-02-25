@@ -1,4 +1,4 @@
-    <?php require_once './views/partials/_livro.php'; ?>
+    <?php require_once '../views/partials/_livro.php'; ?>
 
 
     <!-- Avaliaçao -->

@@ -11,7 +11,7 @@ function view($view, $data = [])
         $$key = $value; //Manteve o nome da chave e após recebeu o valor da segunda $value
     };
 
-    require "views/templates/app.view.php";
+    require "../views/templates/app.view.php";
 };
 
 
@@ -45,7 +45,7 @@ function flash()
 }
 
 function config($chave = null){
-    $config =  require 'config.php';
+    $config =  require '../config.php';
     
     if(strlen($chave) > 0){
         return $config[$chave];

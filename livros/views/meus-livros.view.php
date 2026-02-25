@@ -6,7 +6,7 @@
     <div class="col-span-3 gap-4 flex flex-col">
         <?php foreach ($livros as $livro) {
 
-            require './views/partials/_livro.php';
+            require '../views/partials/_livro.php';
         } ?>
     </div>
     <div>
