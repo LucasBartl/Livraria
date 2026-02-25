@@ -61,5 +61,3 @@ Uso de require e include
 Organização de código
 
 Manipulação de dados
-
-Boas práticas iniciais
